@@ -115,6 +115,12 @@ def scrape():
         hemi_imglist.append(hemi_dict)
         #print(hemi_imglist)
     mars_dict['Mars_Hemispheres_urls']=hemi_imglist
+    
+    mission_mars = {"News title" : news_title,
+                "News Paragraph": news_paragraph,
+                "Featured image url": featured_image_url,
+                "Mars_Hemispheres_urls" : hemi_imglist
+                }
 
-    return mars_dict    
-     
+    return mission_mars 
+
