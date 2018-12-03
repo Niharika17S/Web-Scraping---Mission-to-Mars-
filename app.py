@@ -8,13 +8,16 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
+    mars_dictionary = mongo.db.mars_dict.find_one()
     return render_template("index.html", dict = mars_dict)
 
 @app.route("/scrape")
 def scrape():
-    
-    marscrape = scrape.scrape()
-    mongo.db.collection.insert_one(mission_mars)
-    
+    mars_dict = mongo.db.mars_dict
+    mars_data = scrape_mars.scrape()
+    mars_dict.update({},
+     mars_data, upsert=True)
+    return 
+
 if __name__ == "__main__":
     app.run(debug=True)    
